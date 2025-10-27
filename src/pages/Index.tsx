@@ -96,7 +96,9 @@ const Index = () => {
             <Menu className="h-6 w-6" />
           </button>
           <div className="flex items-center gap-2">
-            <div className="text-xl font-bold text-foreground">⊕ AJELIX</div>
+            <div className="text-xl font-bold text-foreground">
+              ⊕ My Factory
+            </div>
             <span className="text-muted-foreground">Quality Dashboard</span>
           </div>
         </div>
@@ -106,8 +108,9 @@ const Index = () => {
       <main className="container mx-auto p-6">
         {/* Top Row - KPIs and Large Chart */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 space-y-2">
             <KPICard title="First Pass Yield" value="91%" />
+            <KPICard title="Defect Rate" value="7%" />
           </div>
           <div className="lg:col-span-2">
             <KPICard title="Customer Complaints Rate" value="">
@@ -124,8 +127,14 @@ const Index = () => {
               </div>
               <ResponsiveContainer width="100%" height={200}>
                 <AreaChart data={complaintsReturnsData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="month" tick={{ fill: "hsl(var(--muted-foreground))" }} />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="hsl(var(--border))"
+                  />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  />
                   <YAxis tick={{ fill: "hsl(var(--muted-foreground))" }} />
                   <Tooltip />
                   <Area
@@ -162,13 +171,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Second Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-          <div className="lg:col-span-2">
-            <KPICard title="Defect Rate" value="7%" />
-          </div>
-        </div>
-
         {/* Third Row - Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
           <div className="lg:col-span-6">
@@ -181,21 +183,44 @@ const Index = () => {
               </div>
               <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={defectsData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="month" tick={{ fill: "hsl(var(--muted-foreground))" }} />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="hsl(var(--border))"
+                  />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  />
                   <YAxis tick={{ fill: "hsl(var(--muted-foreground))" }} />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="rework" stackId="a" fill="hsl(var(--primary))" name="Rework Count" />
-                  <Bar dataKey="scrap" stackId="a" fill="hsl(var(--secondary))" name="Scrap Count" />
-                  <Bar dataKey="defects" stackId="a" fill="hsl(var(--chart-4))" name="Defect Count" />
+                  <Bar
+                    dataKey="rework"
+                    stackId="a"
+                    fill="hsl(var(--primary))"
+                    name="Rework Count"
+                  />
+                  <Bar
+                    dataKey="scrap"
+                    stackId="a"
+                    fill="hsl(var(--secondary))"
+                    name="Scrap Count"
+                  />
+                  <Bar
+                    dataKey="defects"
+                    stackId="a"
+                    fill="hsl(var(--chart-4))"
+                    name="Defect Count"
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </Card>
           </div>
           <div className="lg:col-span-3">
             <Card className="p-6 shadow-sm border-border h-full">
-              <h3 className="text-sm font-medium text-muted-foreground mb-4">On-Time Delivery Rate</h3>
+              <h3 className="text-sm font-medium text-muted-foreground mb-4">
+                On-Time Delivery Rate
+              </h3>
               <GaugeChart value={98.8} color="hsl(var(--primary))" />
             </Card>
           </div>
@@ -206,12 +231,28 @@ const Index = () => {
               </h3>
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={deliveriesData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="month" tick={{ fill: "hsl(var(--muted-foreground))" }} />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="hsl(var(--border))"
+                  />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  />
                   <YAxis tick={{ fill: "hsl(var(--muted-foreground))" }} />
                   <Tooltip />
-                  <Line type="monotone" dataKey="onTime" stroke="hsl(var(--secondary))" strokeWidth={2} />
-                  <Line type="monotone" dataKey="late" stroke="hsl(var(--chart-3))" strokeWidth={2} />
+                  <Line
+                    type="monotone"
+                    dataKey="onTime"
+                    stroke="hsl(var(--secondary))"
+                    strokeWidth={2}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="late"
+                    stroke="hsl(var(--chart-3))"
+                    strokeWidth={2}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </Card>
@@ -228,11 +269,19 @@ const Index = () => {
           </div>
           <div className="lg:col-span-4">
             <Card className="p-6 shadow-sm border-border h-full">
-              <h3 className="text-sm font-medium text-muted-foreground mb-4">Total Produced</h3>
+              <h3 className="text-sm font-medium text-muted-foreground mb-4">
+                Total Produced
+              </h3>
               <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={productionData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="month" tick={{ fill: "hsl(var(--muted-foreground))" }} />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="hsl(var(--border))"
+                  />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                  />
                   <YAxis tick={{ fill: "hsl(var(--muted-foreground))" }} />
                   <Tooltip />
                   <Bar dataKey="value" fill="hsl(var(--primary))" />
@@ -269,9 +318,15 @@ const Index = () => {
                   <tbody>
                     {productDefectsData.map((product) => (
                       <tr key={product.id} className="border-b border-border">
-                        <td className="py-3 text-sm text-foreground">{product.id}</td>
-                        <td className="py-3 text-sm text-foreground">{product.defects}</td>
-                        <td className="py-3 text-sm text-foreground">{product.complaints}</td>
+                        <td className="py-3 text-sm text-foreground">
+                          {product.id}
+                        </td>
+                        <td className="py-3 text-sm text-foreground">
+                          {product.defects}
+                        </td>
+                        <td className="py-3 text-sm text-foreground">
+                          {product.complaints}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
